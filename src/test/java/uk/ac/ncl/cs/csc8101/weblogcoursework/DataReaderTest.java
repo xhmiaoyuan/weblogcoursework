@@ -36,7 +36,7 @@ import static org.junit.Assert.*;
 public class DataReaderTest {
 
 	private final static File dataDir = new File(
-			"C:/Users/hp/Desktop/ACS/big data/loglite");
+			"/home/ubuntu/data/cassandra-test-dataset/CSC8101-logfile.gz");
 	// 1,352,794,346 lines, 13050324662bytes (13G),
 	// md5sum=b7089321366fe6f8131196b81d060c5d
 	// first line: 34600 [30/Apr/1998:21:30:17 +0000]
@@ -51,10 +51,9 @@ public class DataReaderTest {
 	public static void readDataFile() throws IOException, ParseException {
 
 		final FileInputStream fileInputStream = new FileInputStream(dataDir);
-		// final GZIPInputStream gzipInputStream = new
-		// GZIPInputStream(fileInputStream);
+		final GZIPInputStream gzipInputStream = new GZIPInputStream(fileInputStream);
 		final InputStreamReader inputStreamReader = new InputStreamReader(
-				fileInputStream);
+				gzipInputStream);
 		final BufferedReader bufferedReader = new BufferedReader(
 				inputStreamReader);
 		
