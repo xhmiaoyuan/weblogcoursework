@@ -40,7 +40,6 @@ public class WriterSessionData {
 				BatchStatement.Type.UNLOGGED);
 		batchStatement.add(new BoundStatement(insertPS).bind(Integer.parseInt(sitesession.getId()),new Date(sitesession.getFirstHitMillis()),new Date(sitesession.getLastHitMillis()),sitesession.getHitCount(),sitesession.getHyperLogLog().cardinality()));		
 		session.execute(batchStatement);
-		System.out.println("____");
 		
 
 	}
