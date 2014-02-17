@@ -12,17 +12,25 @@ import com.datastax.driver.core.Session;
 
 public class WriterSessionData {
 	private static Cluster cluster=new Cluster.Builder().addContactPoint("localhost").build();
-	private static Session session= cluster.connect("test");
-	private static final PreparedStatement insertPS = session
-			.prepare("INSERT INTO data_session (clientid,starttime,endtime,times,URLtimes) VALUES (?,?,?,?,?)");
+	private static Session session;
+	private static  PreparedStatement insertPS;
 
 
 	
 	
 	public static void create(){
-		session.execute("drop table data_session");
+
+		final Session bootstrapSession = cluster.connect();
+	    bootstrapSession
+				.execute("CREATE KEYSPACE IF NOT EXISTS test WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 1 }");
+		bootstrapSession.shutdown();
+
+		session = cluster.connect("test");
+		//session.execute("drop table IF NOT EXISTS data_session");
 
 		session.execute("CREATE TABLE IF NOT EXISTS data_session (clientid int,starttime timestamp,endtime timestamp,times bigint,URLtimes bigint, PRIMARY KEY (clientid,starttime) )");
+		insertPS= session
+				.prepare("INSERT INTO data_session (clientid,starttime,endtime,times,URLtimes) VALUES (?,?,?,?,?)");
 	}
 	
 	public static void inside(SiteSession sitesession){

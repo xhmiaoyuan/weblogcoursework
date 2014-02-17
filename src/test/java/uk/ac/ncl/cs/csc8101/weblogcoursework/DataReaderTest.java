@@ -35,8 +35,8 @@ import static org.junit.Assert.*;
  */
 public class DataReaderTest {
 
-	private final File dataDir = new File(
-			"/home/ubuntu/data/cassandra-test-dataset/CSC8101-logfile.gz");
+	private final static File dataDir = new File(
+			"C:/Users/hp/Desktop/ACS/big data/loglite");
 	// 1,352,794,346 lines, 13050324662bytes (13G),
 	// md5sum=b7089321366fe6f8131196b81d060c5d
 	// first line: 34600 [30/Apr/1998:21:30:17 +0000]
@@ -46,22 +46,23 @@ public class DataReaderTest {
 	// private final File logFile = new File(dataDir, "all-clean.gz");
 
 
-	private final DateFormat dateFormat = new SimpleDateFormat("[dd/MMM/yyyy:HH:mm:ss z]",Locale.ENGLISH);
+	private final static DateFormat dateFormat = new SimpleDateFormat("[dd/MMM/yyyy:HH:mm:ss z]",Locale.ENGLISH);
 
-	@Test
-	public void readDataFile() throws IOException, ParseException {
+	public static void readDataFile() throws IOException, ParseException {
 
 		final FileInputStream fileInputStream = new FileInputStream(dataDir);
-		final GZIPInputStream gzipInputStream = new GZIPInputStream(fileInputStream);
+		// final GZIPInputStream gzipInputStream = new
+		// GZIPInputStream(fileInputStream);
 		final InputStreamReader inputStreamReader = new InputStreamReader(
-				gzipInputStream);
+				fileInputStream);
 		final BufferedReader bufferedReader = new BufferedReader(
 				inputStreamReader);
 		
 		String line=null;
+    	long num=0;
         while( (line=bufferedReader.readLine())!=null )
         {
-        	long num=0;
+
         	if(num%1000000==0){
         		System.out.println(num);
         	}
@@ -82,5 +83,10 @@ public class DataReaderTest {
 		bufferedReader.close();
 		// assertEquals(893971817000L, millis); // 30/Apr/1998:21:30:17 +0000
 
+	}
+	
+	public static void main(String arg[]) throws IOException, ParseException{
+		WriterSessionData.create();
+		readDataFile();
 	}
 }
