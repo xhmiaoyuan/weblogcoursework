@@ -15,7 +15,6 @@ limitations under the License.
  */
 package uk.ac.ncl.cs.csc8101.weblogcoursework;
 
-import org.junit.Test;
 
 import java.io.*;
 import java.text.DateFormat;
@@ -25,7 +24,6 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.zip.GZIPInputStream;
 
-import static org.junit.Assert.*;
 
 /**
  * Unit test for parsing of compressed web server log file

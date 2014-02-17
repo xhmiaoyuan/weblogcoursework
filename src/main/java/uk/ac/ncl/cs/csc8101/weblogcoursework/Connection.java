@@ -18,16 +18,13 @@ limitations under the License.
 
 import com.datastax.driver.core.*;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
+
 
 import java.util.Calendar;
-import java.util.List;
-import java.util.Random;
-import java.util.TimeZone;
 
-import static org.junit.Assert.*;
+import java.util.Random;
+
+
 
 /**
  * Simple integration tests for cassandra server v2 / CQL3 via datastax

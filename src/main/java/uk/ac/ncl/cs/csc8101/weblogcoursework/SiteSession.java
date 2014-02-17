@@ -16,7 +16,7 @@ limitations under the License.
 package uk.ac.ncl.cs.csc8101.weblogcoursework;
 
 import com.clearspring.analytics.stream.cardinality.HyperLogLog;
-import com.datastax.driver.core.PreparedStatement;
+
 
 import java.util.concurrent.TimeUnit;
 

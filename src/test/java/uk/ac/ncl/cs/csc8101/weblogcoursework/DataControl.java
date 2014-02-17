@@ -1,14 +1,11 @@
 package uk.ac.ncl.cs.csc8101.weblogcoursework;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
 
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.concurrent.atomic.AtomicReference;
 
 public class DataControl {
 	private static HashMap<String, SiteSession> sessions = new LinkedHashMap<String, SiteSession>() {

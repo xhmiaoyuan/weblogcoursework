@@ -1,7 +1,5 @@
 package uk.ac.ncl.cs.csc8101.weblogcoursework;
 
-import java.util.Calendar;
-import java.util.Date;
 
 import com.datastax.driver.core.BoundStatement;
 import com.datastax.driver.core.Cluster;
